@@ -10,12 +10,13 @@ contract Items is ERC1155 {
  
     constructor() public ERC1155("Item") {}
     
-    function mintItem(address player, string memory tokenURI)
+    function mintItem( string memory tokenURI)
         public
         returns (uint256)
     {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
+        _setURI(tokenURI);
        _mint(msg.sender, newItemId, 1, "");
     }
 }
